@@ -12,7 +12,11 @@ $white: #fff;
 	-webkit-border-radius: $size / 10 + rem;
 	border-radius:$size / 10 + rem;
 }
-
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
 @mixin rem($property, $values...) {
 	$n: length($values);
   	$i: 1;
@@ -107,7 +111,7 @@ body{
 	display: none;
 	top: 0;
 	left: 0;
-    opacity: 0.8;
+    @include opacity(0.8);
     position: absolute;
     z-index: 9000;
 }

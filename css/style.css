@@ -145,6 +145,7 @@ body {
   top: 0;
   left: 0;
   opacity: 0.8;
+  filter: alpha(opacity=80);
   position: absolute;
   z-index: 9000;
 }
