@@ -26,7 +26,7 @@ $(document).ready(function(){
     $('.window .close').click(function (e) {
         //Cancel the link behavior
         e.preventDefault();
-        $('#mask, .window').hide();
+        $('#mask, .window').fadeOut();
     });
 
 	//if mask is clicked

@@ -1,0 +1,113 @@
+$darkGrey: #333;
+$medGrey: #666;
+$lightGrey: #ccc;
+$veryLightGrey: #e3e3e3;
+$white: #fff;
+
+@mixin roundedCorners($size){
+	-moz-border-radius: $size + px;
+	-webkit-border-radius: $size + px;
+	border-radius:$size + px;
+	-moz-border-radius: $size / 10 + rem;
+	-webkit-border-radius: $size / 10 + rem;
+	border-radius:$size / 10 + rem;
+}
+
+@mixin rem($property, $values...) {
+	$n: length($values);
+  	$i: 1;
+
+  	$pxlist: ();
+  	$remlist: ();
+
+  	@while $i <= $n {
+		$itemVal: (nth($values, $i));
+		@if $itemVal != "auto"{
+			$pxlist: append($pxlist, $itemVal + px);
+	    	$remlist: append($remlist, ($itemVal / 10) + rem);
+		}@else{
+			$pxlist: append($pxlist, auto);
+			$remlist: append($remlist, auto);
+		}
+ 		
+	
+    	$i: $i + 1;
+  	}
+
+  	#{$property}: $pxlist;
+  	#{$property}: $remlist;
+}
+
+@mixin linearGradient($top, $bottom){
+	background: $top; /* Old browsers */
+	background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+
+html{font-size:62.5%;}
+body{
+	margin:0;
+	padding:0;
+	font-family:Helvetica, Arial, Sans-serif;
+}
+.content{
+	@include rem("margin-top", 50);
+	text-align: center;
+
+	a{
+		@include linearGradient($lightGrey, $medGrey);
+		@include roundedCorners(10);
+		@include rem("padding", 10, 20);
+		color:$white;
+		text-decoration: none;
+		@include rem("font-size", 12);
+	}
+	a:hover, a:focus{
+		@include linearGradient($veryLightGrey, $medGrey);
+		color:$darkGrey;
+	}
+}
+.window{
+	display:none;
+	background:white;
+	@include roundedCorners(10);
+	position: absolute;
+    @include rem("width", 450);
+    @include rem("height", 300);
+    z-index: 9999;
+	@include rem("padding", 15);
+	@include rem("font-size", 12);
+
+	a.close{
+		@include rem("font-size", 12);
+		@include rem("top", -5);
+    	@include rem("right", -5);
+		position:absolute;
+		@include rem("padding", 8, 10);
+		@include roundedCorners(30);
+		color:$white;
+		text-decoration: none;
+		border:5px solid $white;
+		@include linearGradient($lightGrey, $medGrey);
+	}
+	a.close:hover, a.close:focus{
+		@include linearGradient($veryLightGrey, $medGrey);
+		color:$darkGrey;
+	}
+}
+
+#mask{
+	background-color: $darkGrey;
+	display: none;
+	top: 0;
+	left: 0;
+    opacity: 0.8;
+    position: absolute;
+    z-index: 9000;
+}
