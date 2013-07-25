@@ -1,0 +1,31 @@
+body{
+	margin:0px;
+	padding:0px;
+	font-family:Arial;
+}
+
+.window{
+	display:none;
+	background:#ffffff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius:10px;
+	position: absolute;
+    width: 440px;
+    z-index: 9999;
+	padding:10px;
+}
+
+.window .close{
+	float:right;
+}
+
+#mask{
+	background-color: #333333;
+	display: none;
+	left: 0;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    z-index: 9000;
+}
