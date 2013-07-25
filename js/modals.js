@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//modal windows
-	$('a[name=modal]').live("click", function(e) {
+	$('a[name=modal]').on("click", function(e) {
 		var id = $(this).attr('href');
 
         var maskHeight = $(document).height();
