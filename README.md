@@ -23,9 +23,9 @@ HTML link to open content in a modal window.
 
 	<a href="content, video or image added here" class="modal">Modal Window</a>
 
-How to open Youtube videos in modal window
+How to open Youtube videos in modal window. Make sure to add the ID of the video in place of 'youtubeVideoIDHere'.
 
-	<a href="youTubeEmbed('youtubeVideoIDHere','rel=0&amp;hd=1&amp;wmode=transparent')" class="modal">Open video</a>
+	<a href="youTubeEmbed('https://www.youtube.com/embed/youtubeVideoIDHere?rel=0&amp;hd=1&amp;wmode=transparent')" class="modal">Open video</a>
 
 How to open JPG or PNG image files in a modal window
 
