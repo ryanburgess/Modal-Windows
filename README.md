@@ -22,6 +22,14 @@ Add a reference to the modal.css file.
 HTML link to open content in a modal window.
 
 	<a href="content, video or image added here" class="modal">Modal Window</a>
+
+How to open Youtube videos in modal window
+
+	<a href="youTubeEmbed('youtubeVideoIDHere','rel=0&amp;hd=1&amp;wmode=transparent')" class="modal">Open video</a>
+
+How to open JPG or PNG image files in a modal window
+
+	<a href="/pathtoyourimage/image.jpg" class="modal">Open video</a>
 	 	
 
 
