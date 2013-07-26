@@ -16,11 +16,8 @@
         var fullContent = content;
 
         //if youtube video or images passed into modal
-        if(content.indexOf("youTubeEmbed") !== -1){
-            content = content.replace("youTubeEmbed('","");
-            content = content.replace("')","");
-            content = content.replace("','","?");
-            fullContent = "<iframe width='560' height='315' src='//www.youtube.com/embed/"+ content +"' allowfullscreen='allowfullscreen'></iframe>";
+        if(content.indexOf("youtube.com/embed") !== -1){
+            fullContent = "<iframe width='560' height='315' src='"+ content +"' allowfullscreen='allowfullscreen'></iframe>";
         }else if(content.indexOf("jpg") !== -1 || content.indexOf("png") !== -1){
             fullContent = "<img src='"+ content +"'>";
         }
