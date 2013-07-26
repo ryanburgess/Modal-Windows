@@ -49,6 +49,7 @@
         //Cancel the link behavior
         e.preventDefault();
         $('#mask, .window').fadeOut();
+        $(".window iframe").remove();
     });
 
     //if mask is clicked
