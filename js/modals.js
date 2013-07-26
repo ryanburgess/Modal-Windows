@@ -1,40 +1,65 @@
-$(document).ready(function(){
-	//modal windows
-	$('a[name=modal]').on("click", function(e) {
-		var id = $(this).attr('href');
+//Created by Ryan Burgess
+//Modal Windows Script
+
+(function($) {
+    "use strict";
+
+    //load mask
+    $("<div id='mask'></div>").appendTo("body");
+    
+    //modal windows
+    $('.modal').on("click", function(e) {
+        //remove existing modal window
+        $("#modal-window").remove();
+
+        var content = $(this).attr('href');
+        var fullContent = content;
+
+        //if youtube video or images passed into modal
+        if(content.indexOf("youTubeEmbed") !== -1){
+            content = content.replace("youTubeEmbed('","");
+            content = content.replace("')","");
+            content = content.replace("','","?");
+            fullContent = "<iframe width='560' height='315' src='//www.youtube.com/embed/"+ content +"' allowfullscreen='allowfullscreen'></iframe>";
+        }else if(content.indexOf("jpg") !== -1 || content.indexOf("png") !== -1){
+            fullContent = "<img src='"+ content +"'>";
+        }
+
+        //load modal window with content passed
+        $("<div id='modal-window' class='window'>"+ fullContent +"<a href='#' class='close'>X</a></div>").appendTo("body");
 
         var maskHeight = $(document).height();
         var maskWidth = $(window).width();
 
-        $('#mask').css({'width':maskWidth,'height':maskHeight});
+        $("#mask").css({"width":maskWidth,"height":maskHeight});
 
-        $('#mask').show();   
+        $("#mask").show();   
 
         var winH = $(window).height();
         var winW = $(window).width();
 
-		$(id).css("top", ( $(window).height() - $(id).height() ) / 2+$(window).scrollTop() + "px");
-		$(id).css("left", ( $(window).width() - $(id).width() ) / 2+$(window).scrollLeft() + "px");
+        $(".window").css("top", ( $(window).height() - $(".window").height() ) / 2+$(window).scrollTop() + "px");
+        $(".window").css("left", ( $(window).width() - $(".window").width() ) / 2+$(window).scrollLeft() + "px");
 
-        $(id).fadeIn();
+        $(".window").fadeIn();
 
-		e.preventDefault();
-		     
-	});
-	
-	//if close button is clicked
-    $('.window .close').click(function (e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    //if close button is clicked
+    $("body").on("click", ".window .close", function (e) {
         //Cancel the link behavior
         e.preventDefault();
         $('#mask, .window').fadeOut();
     });
 
-	//if mask is clicked
-	$('#mask').click(function (e) {
+    //if mask is clicked
+    $("#mask").on("click", function (e) {
         //Cancel the link behavior
         e.preventDefault();
-        $('#mask, .window').hide();
+        $("#mask, .window").hide();
     });
-});
-
+    
+}(jQuery));
 

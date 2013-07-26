@@ -82,16 +82,16 @@ body{
 	background:white;
 	@include roundedCorners(10);
 	position: absolute;
-    @include rem("width", 450);
-    @include rem("height", 300);
+    @include rem("min-width", 50);
+    @include rem("min-height", 50);
     z-index: 9999;
-	@include rem("padding", 15);
+	@include rem("padding", 25);
 	@include rem("font-size", 12);
 
 	a.close{
 		@include rem("font-size", 12);
-		@include rem("top", -5);
-    	@include rem("right", -5);
+		@include rem("top", -10);
+    	@include rem("right", -10);
 		position:absolute;
 		@include rem("padding", 8, 10);
 		@include roundedCorners(30);
