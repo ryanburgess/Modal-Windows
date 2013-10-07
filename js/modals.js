@@ -17,7 +17,7 @@
 
         //if youtube video or images passed into modal
         if(content.indexOf("youtube.com/embed") !== -1){
-            fullContent = "<iframe width='560' height='315' src='"+ content +"' allowfullscreen='allowfullscreen'></iframe>";
+            fullContent = "<iframe src='"+ content +"' allowfullscreen='allowfullscreen'></iframe>";
         }else if(content.indexOf("jpg") !== -1 || content.indexOf("png") !== -1){
             fullContent = "<img src='"+ content +"'>";
         }
@@ -58,6 +58,14 @@
         e.preventDefault();
         $("#mask, .window").hide();
     });
+
+    // Change modal window size repsonsive
+    $(window).bind("resize", checkWindowSize);
+    function checkWindowSize(e) {
+        $(".window").css("top", ( $(window).height() - $(".window").height() ) / 2+$(window).scrollTop() + "px");
+        $(".window").css("left", ( $(window).width() - $(".window").width() ) / 2+$(window).scrollLeft() + "px");
+        $("#mask").css({"width":$(window).width(),"height":$(document).height()});
+    }
     
 }(jQuery));
 

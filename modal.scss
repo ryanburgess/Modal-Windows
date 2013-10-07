@@ -52,7 +52,9 @@ $white: #fff;
 	background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 }
-
+@mixin breakpoint($size) {
+	@media only screen and (max-width : $size + px) { @content; }
+}
 
 html{font-size:62.5%;}
 body{
@@ -80,24 +82,51 @@ body{
 .window{
 	display:none;
 	background:white;
-	@include roundedCorners(10);
 	position: absolute;
     @include rem("min-width", 50);
     @include rem("min-height", 50);
     z-index: 9999;
-	@include rem("padding", 25);
-	@include rem("font-size", 12);
+
+	iframe{
+		border:none;
+		@include rem("width", 960);
+        @include rem("height", 540);
+
+        @include breakpoint(960){
+            @include rem("width", 640);
+            @include rem("height", 360);
+        }
+
+        @include breakpoint(640){
+            @include rem("width", 480);
+            @include rem("height", 270);
+        }
+
+        @include breakpoint(480){
+            @include rem("width", 420);
+            @include rem("height", 236);
+        }
+
+        @include breakpoint(420){
+            @include rem("width", 360);
+            @include rem("height", 203);
+        }
+
+        @include breakpoint(360){
+            @include rem("width", 320);
+            @include rem("height", 180);
+        }
+	}
 
 	a.close{
 		@include rem("font-size", 12);
-		@include rem("top", -10);
-    	@include rem("right", -10);
+		@include rem("top", -15);
+    	@include rem("right", -15);
 		position:absolute;
 		@include rem("padding", 8, 10);
 		@include roundedCorners(30);
 		color:$white;
 		text-decoration: none;
-		border:5px solid $white;
 		@include linearGradient($lightGrey, $medGrey);
 	}
 	a.close:hover, a.close:focus{
