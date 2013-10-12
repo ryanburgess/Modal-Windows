@@ -2,13 +2,12 @@
 //Modal Windows Script
 
 (function($) {
-    "use strict";
 
     //load mask
     $("<div id='mask'></div>").appendTo("body");
-    
     //modal windows
     $('.modal').on("click", function(e) {
+
         //remove existing modal window
         $("#modal-window").remove();
 
