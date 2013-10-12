@@ -60,11 +60,13 @@
     });
 
     // Change modal window size repsonsive
-    $(window).bind("resize", checkWindowSize);
-    function checkWindowSize(e) {
-        $(".window").css("top", ( $(window).height() - $(".window").height() ) / 2+$(window).scrollTop() + "px");
-        $(".window").css("left", ( $(window).width() - $(".window").width() ) / 2+$(window).scrollLeft() + "px");
-        $("#mask").css({"width":$(window).width(),"height":$(document).height()});
+    if($("#mask").is(':visible')){
+        $(window).bind("resize", checkWindowSize);
+        function checkWindowSize(e) {
+            $(".window").css("top", ( $(window).height() - $(".window").height() ) / 2+$(window).scrollTop() + "px");
+            $(".window").css("left", ( $(window).width() - $(".window").width() ) / 2+$(window).scrollLeft() + "px");
+            $("#mask").css({"width":$(window).width(),"height":$(document).height()});
+        }
     }
     
 }(jQuery));
