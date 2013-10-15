@@ -1,10 +1,11 @@
 //Created by Ryan Burgess
 //Modal Windows Script
 
-(function($) {
+(function ($) {
+    "use strict";
 
     //modal windows
-    $('.modal').on("click", function(e) {
+    $(".modal").on("click", function (e) {
 
         //load mask
         $("<div id='mask'></div>").appendTo("body");
@@ -12,7 +13,7 @@
         //remove existing modal window
         $("#modal-window").remove();
 
-        var content = $(this).attr('href');
+        var content = $(this).attr("href");
         var fullContent = content;
 
         //if youtube video or images passed into modal
@@ -30,10 +31,7 @@
 
         $("#mask").css({"width":maskWidth,"height":maskHeight});
 
-        $("#mask").show();   
-
-        var winH = $(window).height();
-        var winW = $(window).width();
+        $("#mask").show();
 
         $(".window").css("top", ( $(window).height() - $(".window").height() ) / 2+$(window).scrollTop() + "px");
         $(".window").css("left", ( $(window).width() - $(".window").width() ) / 2+$(window).scrollLeft() + "px");
@@ -43,12 +41,18 @@
         e.preventDefault();
         return false;
     });
+
+    function removeItems() {
+        setTimeout(function () {
+            $("#mask, .window").remove();
+        }, 500);
+    }
     
     //if close button is clicked
     $("body").on("click", ".window .close", function (e) {
         //Cancel the link behavior
         e.preventDefault();
-        $('#mask, .window').fadeOut();
+        $("#mask, .window").fadeOut();
         $(".window iframe").remove();
         removeItems();
     });
@@ -62,21 +66,18 @@
         removeItems();
     });
 
-    function removeItems(){
-        setTimeout(function(){
-            $('#mask, .window').remove();
-        }, 500);
+    // Function to check the current window size for responsive pages
+    function checkWindowSize() {
+        $(".window").css("top", ($(window).height() - $(".window").height() ) / 2 + $(window).scrollTop() + "px");
+        $(".window").css("left", ($(window).width() - $(".window").width() ) / 2 + $(window).scrollLeft() + "px");
+        $("#mask").css({"width": $(window).width(),"height":$(document).height()});
     }
 
     // Change modal window size repsonsive
-    if($("#mask").is(':visible')){
+    if ($("#mask").is(":visible")) {
         $(window).bind("resize", checkWindowSize);
-        function checkWindowSize(e) {
-            $(".window").css("top", ( $(window).height() - $(".window").height() ) / 2+$(window).scrollTop() + "px");
-            $(".window").css("left", ( $(window).width() - $(".window").width() ) / 2+$(window).scrollLeft() + "px");
-            $("#mask").css({"width":$(window).width(),"height":$(document).height()});
-        }
     }
+    
     
 }(jQuery));
 
