@@ -3,10 +3,11 @@
 
 (function($) {
 
-    //load mask
-    $("<div id='mask'></div>").appendTo("body");
     //modal windows
     $('.modal').on("click", function(e) {
+
+        //load mask
+        $("<div id='mask'></div>").appendTo("body");
 
         //remove existing modal window
         $("#modal-window").remove();
@@ -49,14 +50,23 @@
         e.preventDefault();
         $('#mask, .window').fadeOut();
         $(".window iframe").remove();
+        removeItems();
     });
 
     //if mask is clicked
-    $("#mask").on("click", function (e) {
+    $("body").on("click", "#mask", function (e) {
         //Cancel the link behavior
         e.preventDefault();
         $("#mask, .window").hide();
+        $(".window iframe").remove();
+        removeItems();
     });
+
+    function removeItems(){
+        setTimeout(function(){
+            $('#mask, .window').remove();
+        }, 500);
+    }
 
     // Change modal window size repsonsive
     if($("#mask").is(':visible')){
