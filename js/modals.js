@@ -67,16 +67,13 @@
     });
 
     // Function to check the current window size for responsive pages
-    function checkWindowSize() {
-        $(".window").css("top", ($(window).height() - $(".window").height() ) / 2 + $(window).scrollTop() + "px");
-        $(".window").css("left", ($(window).width() - $(".window").width() ) / 2 + $(window).scrollLeft() + "px");
-        $("#mask").css({"width": $(window).width(),"height":$(document).height()});
-    }
-
     // Change modal window size repsonsive
-    if ($("#mask").is(":visible")) {
-        $(window).bind("resize", checkWindowSize);
+    function checkWindowSize() {
+        $(".window").css("top", ( $(window).height() - $(".window").height() ) / 2+$(window).scrollTop() + "px");
+        $(".window").css("left", ( $(window).width() - $(".window").width() ) / 2+$(window).scrollLeft() + "px");
+        $("#mask").css({"width":$(window).width(),"height":$(document).height()});
     }
+    $(window).bind("resize", checkWindowSize);
     
     
 }(jQuery));
