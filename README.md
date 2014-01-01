@@ -1,7 +1,7 @@
-Light Weight Modal Windows
+Responsive Light Weight Modal Windows
 =============
 
-A simple extendable modal window script for displaying content, video and images in popup windows. The modal windows are built using JQuery, HTML and CSS3. All the CSS classes for the modal windows are are available in the modal.css file to make it easier to style the modals the way you want. A SASS file is also included to compile the modal.css.
+A simple, responsive and extendable modal window script for displaying content, video and images in popup windows. The modal windows are built using JQuery, HTML and CSS3. All the CSS classes for the modal windows are are available in the modal.css file to make it easier to style the modals the way you want. A SASS file is also included to compile the modal.css.
 
 [DEMO](http://coderesponsible.com/demos/modal/)
 
