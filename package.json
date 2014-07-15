@@ -1,0 +1,14 @@
+{
+  "name": "Modal-Windows",
+  "version": "1.0.0",
+  "description": "A simple, responsive and extendable modal window script for displaying content, video and images in popup windows. The modal windows are built using JQuery, HTML and CSS3. All the CSS classes for the modal windows are are available in the modal.css file to make it easier to style the modals the way you want. A SASS file is also included to compile the modal.css.",
+  "repository": "https://github.com/ryanburgess/Modal-Windows",
+  "author": "Ryan Burgess",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-newer": "~0.6.1",
+    "grunt-sass": "~0.11.0"
+  }
+}

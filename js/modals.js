@@ -11,11 +11,15 @@
         $("<div id='mask'></div>").appendTo("body");
 
         var content = $(this).attr("href");
-
+        var vidParameters = '?vq=hd720&autoplay=1&showinfo=0&rel=0';
         //if youtube video or images passed into modal
         if (content.indexOf("youtube.com/embed") !== -1) {
-            content = "<iframe src='" + content + "' allowfullscreen='allowfullscreen'></iframe>";
-        } else if (content.indexOf("jpg") !== -1 || content.indexOf("png") !== -1) {
+            content = "<iframe src='" + content + vidParameters +"' allowfullscreen='allowfullscreen'></iframe>";
+        }else if(content.indexOf('vimeo.com/') !== -1){
+            var vidId = content.split('vimeo.com/');
+            vidId = vidId[1];
+            fullContent = '<iframe src="//player.vimeo.com/video/'+ vidId +'?color=9C191E&amp;autoplay=1" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+        }else if (content.indexOf("jpg") !== -1 || content.indexOf("png") !== -1) {
             content = "<img src='" + content + "'>";
         }
 
